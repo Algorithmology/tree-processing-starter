@@ -9,7 +9,7 @@ from rich.tree import Tree
 def get_file_size(path: Path) -> Tuple[int, str]:
     """Compute the size of a file in bytes."""
     # TODO: implement this function so that it returns:
-    # (1) the size of the file in bytes and 
+    # (1) the size of the file in bytes and
     # (2) an error message if there was any problem
     # associated with computing the file size
     return (0, "")
@@ -40,7 +40,7 @@ def build_directory_tree(
     # that contains the following two values:
     # (1) the tree representation of the directory structure
     # (2) a dictionary that maps the file names to their sizes
-    # TODO: make sure that the tree representation of the 
+    # TODO: make sure that the tree representation of the
     # directory structure is built recursively and uses the
     # rich.tree module to create the tree; note that this is
     # important because using rich.tree will make it easier
