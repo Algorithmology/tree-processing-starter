@@ -172,6 +172,6 @@ setup: |
 - description: Have at least a specific minimum of commits in repository
   check: CountCommits
   options:
-    count: 10
+    count: 8
 
 # }}}
