@@ -44,7 +44,7 @@ TODO: Make sure that each run is for a unique directory specified on the command
 
 TODO: Provide a one-paragraph response that answers this question in your own words.
 
-### What is challenging about building a hierarchical representation of a file system?
+### What is challenging about building a hierarchical representation of a filesystem?
 
 TODO: Provide a one-paragraph response that answers this question in your own words.
 
