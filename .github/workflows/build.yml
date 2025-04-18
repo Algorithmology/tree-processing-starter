@@ -35,12 +35,12 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest]
-        python-version: ["3.11"]
+        python-version: ["3.12"]
         include:
           - os: macos-latest
-            python-version: "3.11"
+            python-version: "3.12"
           - os: windows-latest
-            python-version: "3.11"
+            python-version: "3.12"
     # Define the workflow steps
     steps:
     # Checkout the code of the repository
@@ -69,7 +69,7 @@ jobs:
           if: always()
           uses: abatilo/actions-poetry@v2.0.0
           with:
-            poetry-version: 1.7.1
+            poetry-version: 2.0.0
         # Install dependencies
         - name: Install dependencies
           if: always()
@@ -84,7 +84,7 @@ jobs:
             poetry run treeprocessor --directory example-dir
         # Run GatorGrader: see config/gatorgrade.yml
         - name: Run GatorGrader with GatorGrade
-          if: always() && matrix.os == 'ubuntu-latest'
+          if: always()
           run:  |
             pip install gatorgrade
             gatorgrade --config config/gatorgrade.yml --report env md GITHUB_STEP_SUMMARY
