@@ -19,21 +19,21 @@ console = Console()
 
 @cli.command()
 def main(directory: Path = typer.Option(...)):
-    """Traverse a file system tree."""
+    """Traverse a filesystem tree."""
     console.print("\n[bold red]File system traversal tool[/bold red]\n")
     console.print(f"Chosen directory: {directory}")
     (filesystem_tree, filesystem_tree_sizes) = build_directory_tree(
         directory, None, {}
     )
-    console.print("\n[bold red]File system tree hierarchy[/bold red]\n")
+    console.print("\n[bold red]Filesystem tree hierarchy[/bold red]\n")
     console.print(filesystem_tree)
-    console.print("\n[bold red]File system tree sizes (in bytes)[/bold red]\n")
+    console.print("\n[bold red]Filesystem tree sizes (in bytes)[/bold red]\n")
     for path, size in filesystem_tree_sizes.items():
         console.print(f"{path}: {size} bytes")
     min_size, min_files, max_size, max_files, avg_size = calculate_file_stats(
         filesystem_tree_sizes
     )
-    console.print("\n[bold red]File system tree statistics[/bold red]\n")
+    console.print("\n[bold red]Filesystem tree statistics[/bold red]\n")
     console.print(f"Minimum file size: {min_size} bytes")
     console.print("Files with minimum size:")
     for file in min_files:
