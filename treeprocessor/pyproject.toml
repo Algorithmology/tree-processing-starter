@@ -12,20 +12,13 @@ python = "^3.8"
 rich = "^10.9.0"
 typer = {extras = ["all"], version = "^0.7.0"}
 
-[tool.poetry.dev-dependencies]
+[tool.poetry.group.dev.dependencies]
 taskipy = "^1.8.1"
 mypy = "^0.910"
-pytest = "^7.2.0"
 pymarkdownlnt = "^0.9.8"
-
-[tool.poetry.group.dev.dependencies]
-ruff = "==0.1.15"
 symbex = "^1.4"
-pytest-cov = "^4.1.0"
-pytest-xdist = "^3.5.0"
-pytest-clarity = "^1.0.1"
-pytest-randomly = "^3.15.0"
 mdtoc = "^1.3"
+ruff = "^0.11.5"
 
 [tool.taskipy.variables]
 project = "treeprocessor"
@@ -33,24 +26,18 @@ tests = "tests"
 readme = "../README.md"
 reflection = "../writing/reflection.md"
 check-command = { var = "ruff check {project}", recursive = true }
-coverage-test-command = "pytest -s --cov-context=test --cov-fail-under=90 --cov-report term-missing --cov-report json --cov --cov-branch"
-coverage-test-command-silent = "pytest -x --show-capture=no --cov-report term-missing --cov-report json --cov --cov-branch"
 fixformat-command = { var = "ruff format {project}", recursive = true }
 format-command = { var = "ruff format --check {project}", recursive = true }
 markdownlint-command = { var = "poetry run pymarkdown --config .pymarkdown.cfg scan {readme} {reflection}", recursive = true }
 mypy-command = {var = "mypy {project}", recursive = true}
 symbex-typed-command = {var = "symbex -s --untyped -d {project} --check", recursive = true}
 symbex-documented-command = {var = "symbex -s --undocumented -d {project} --check", recursive = true}
-test-command = "pytest -x -s -vv -n auto"
-test-silent-command = "pytest -x --show-capture=no"
 
 [tool.taskipy.tasks]
 all = "task format && task lint && task test && task coverage"
 lint = "task format && task mypy && task symbex && task markdownlint"
 symbex = "task symbex-typed && task symbex-documented"
 check = { cmd = "{check-command}", help = "Run the ruff linting checks", use_vars = true }
-coverage = { cmd = "{coverage-test-command}", help = "Run test coverage monitoring", use_vars = true }
-coverage-silent = { cmd = "{coverage-test-command-silent}", help = "Run test coverage monitoring", use_vars = true }
 format = { cmd = "{format-command}", help = "Run the ruff formatter on source code", use_vars = true }
 format-fix = { cmd = "{fixformat-command}", help = "Run the ruff formatter to fix source code", use_vars = true}
 markdownlint = { cmd = "{markdownlint-command}", help = "Run the markdown linter on text files", use_vars = true }
